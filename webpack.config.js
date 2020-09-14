@@ -5,7 +5,7 @@ module.exports = {
 	output: {
 		publicPath: "/",
 		path: path.resolve(__dirname, "app"),
-		filename: "/bundled.js",
+		filename: "bundled.js",
 	},
 	mode: "development",
 	devtool: "source-map",
