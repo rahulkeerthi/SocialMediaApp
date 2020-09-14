@@ -11,3 +11,7 @@ function ExampleComponent() {
 }
 
 ReactDOM.render(<ExampleComponent />, document.getElementById("app"))
+
+if (module.hot) {
+	module.hot.accept
+}
