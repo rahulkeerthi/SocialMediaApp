@@ -8,7 +8,7 @@ import HomeGuest from "./components/HomeGuest"
 import About from "./components/About"
 import Terms from "./components/Terms"
 
-function ExampleComponent() {
+function App() {
 	return (
 		<BrowserRouter>
 			<Header />
@@ -28,7 +28,7 @@ function ExampleComponent() {
 	)
 }
 
-ReactDOM.render(<ExampleComponent />, document.getElementById("app"))
+ReactDOM.render(<App />, document.getElementById("app"))
 
 if (module.hot) {
 	module.hot.accept
