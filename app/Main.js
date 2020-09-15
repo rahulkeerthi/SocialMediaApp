@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import Axios from "axios"
 Axios.defaults.baseURL = "http://localhost:8080"
 
+// CREATED COMPONENTS
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import HomeGuest from "./components/HomeGuest"
@@ -14,6 +15,9 @@ import CreatePost from "./components/CreatePost"
 import ViewSinglePost from "./components/ViewSinglePost"
 import FlashMessages from "./components/FlashMessages"
 
+// CONTEXT
+import ExampleContext from "./ExampleContext"
+
 function App() {
 	const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("complexappToken")))
 	const [flashMessages, setFlashMessages] = useState([])
@@ -23,28 +27,30 @@ function App() {
 	}
 
 	return (
-		<BrowserRouter>
-			<FlashMessages messages={flashMessages} />
-			<Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-			<Switch>
-				<Route path='/' exact>
-					{loggedIn ? <Home /> : <HomeGuest />}
-				</Route>
-				<Route path='/about-us' exact>
-					<About />
-				</Route>
-				<Route path='/post/:id'>
-					<ViewSinglePost />
-				</Route>
-				<Route path='/create-post'>
-					<CreatePost addFlashMessage={addFlashMessage} />
-				</Route>
-				<Route path='/terms' exact>
-					<Terms />
-				</Route>
-			</Switch>
-			<Footer />
-		</BrowserRouter>
+		<ExampleContext.Provider value={{ addFlashMessage, setLoggedIn }}>
+			<BrowserRouter>
+				<FlashMessages messages={flashMessages} />
+				<Header loggedIn={loggedIn} />
+				<Switch>
+					<Route path='/' exact>
+						{loggedIn ? <Home /> : <HomeGuest />}
+					</Route>
+					<Route path='/about-us' exact>
+						<About />
+					</Route>
+					<Route path='/post/:id'>
+						<ViewSinglePost />
+					</Route>
+					<Route path='/create-post'>
+						<CreatePost />
+					</Route>
+					<Route path='/terms' exact>
+						<Terms />
+					</Route>
+				</Switch>
+				<Footer />
+			</BrowserRouter>
+		</ExampleContext.Provider>
 	)
 }
 
