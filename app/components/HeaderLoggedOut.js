@@ -1,22 +1,18 @@
-import React, { useEffect, useState, useContext } from "react"
+import React, { useState, useContext } from "react"
 import Axios from "axios"
-import ExampleContext from "../ExampleContext"
+import DispatchContext from "../DispatchContext"
 
 function HeaderLoggedOut(props) {
 	const [username, setUsername] = useState()
 	const [password, setPassword] = useState()
-	const { setLoggedIn } = useContext(ExampleContext)
+	const appDispatch = useContext(DispatchContext)
 
 	async function handleSubmit(e) {
 		e.preventDefault()
 		try {
 			const response = await Axios.post("/login", { username, password })
 			if (response.data) {
-				const { token, username, avatar } = response.data
-				localStorage.setItem("complexappToken", token)
-				localStorage.setItem("complexappUsername", username)
-				localStorage.setItem("complexappAvatar", avatar)
-				setLoggedIn(true)
+				appDispatch({ type: "login", data: response.data })
 			} else {
 				console.log("Invalid username or password")
 			}
