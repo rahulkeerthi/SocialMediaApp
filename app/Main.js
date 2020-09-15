@@ -15,6 +15,7 @@ import Home from "./components/Home"
 import CreatePost from "./components/CreatePost"
 import ViewSinglePost from "./components/ViewSinglePost"
 import FlashMessages from "./components/FlashMessages"
+import Profile from "./components/Profile"
 
 // CONTEXT
 import StateContext from "./StateContext"
@@ -71,6 +72,9 @@ function App() {
 						</Route>
 						<Route path='/about-us' exact>
 							<About />
+						</Route>
+						<Route path='/profile/:username'>
+							<Profile />
 						</Route>
 						<Route path='/post/:id'>
 							<ViewSinglePost />
