@@ -4,8 +4,7 @@ import { useParams, NavLink, Switch, Route } from "react-router-dom"
 import Axios from "axios"
 import StateContext from "../StateContext"
 import ProfilePosts from "./ProfilePosts"
-import ProfileFollowers from "./ProfileFollowers"
-import ProfileFollowing from "./ProfileFollowing"
+import ProfileFollow from "./ProfileFollow"
 import { useImmer } from "use-immer"
 
 function Profile() {
@@ -134,10 +133,10 @@ function Profile() {
 					<ProfilePosts />
 				</Route>
 				<Route path='/profile/:username/followers'>
-					<ProfileFollowers />
+					<ProfileFollow action='followers' />
 				</Route>
 				<Route path='/profile/:username/following'>
-					<ProfileFollowing />
+					<ProfileFollow action='following' />
 				</Route>
 			</Switch>
 		</Page>
