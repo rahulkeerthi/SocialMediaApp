@@ -18,6 +18,7 @@ import FlashMessages from "./components/FlashMessages"
 import Profile from "./components/Profile"
 import EditPost from "./components/EditPost"
 import NotFound from "./components/NotFound"
+import Search from "./components/Search"
 
 // CONTEXT
 import StateContext from "./StateContext"
@@ -26,6 +27,7 @@ import DispatchContext from "./DispatchContext"
 function App() {
 	const initialState = {
 		loggedIn: Boolean(localStorage.getItem("complexappToken")),
+		isSearchOpen: false,
 		flashMessages: [],
 		user: {
 			token: localStorage.getItem("complexappToken"),
@@ -45,6 +47,12 @@ function App() {
 				return
 			case "flashMessage":
 				draft.flashMessages.push(action.value)
+				return
+			case "openSearch":
+				draft.isSearchOpen = true
+				return
+			case "closeSearch":
+				draft.isSearchOpen = false
 				return
 		}
 	}
@@ -94,6 +102,7 @@ function App() {
 							<NotFound />
 						</Route>
 					</Switch>
+					{state.isSearchOpen ? <Search /> : ""}
 					<Footer />
 				</BrowserRouter>
 			</DispatchContext.Provider>
