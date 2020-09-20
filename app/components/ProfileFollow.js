@@ -26,15 +26,23 @@ function ProfileFollow(props) {
 	}, [username, props.action])
 
 	if (isLoading) return <LoadingDotsIcon />
+	if (!isLoading && follows.length == 0) {
+		return (
+			<div className='list-group text-center h3'>
+				<p>No {props.action} yet!</p>
+			</div>
+		)
+	}
 	return (
 		<div className='list-group'>
-			{follows.map((follow, index) => {
-				return (
-					<Link key={index} to={`/profile/${follow.username}`} className='list-group-item list-group-item-action'>
-						<img className='avatar-tiny' src={follow.avatar} /> {follow.username}
-					</Link>
-				)
-			})}
+			{follows &&
+				follows.map((follow, index) => {
+					return (
+						<Link key={index} to={`/profile/${follow.username}`} className='list-group-item list-group-item-action'>
+							<img className='avatar-tiny' src={follow.avatar} /> {follow.username}
+						</Link>
+					)
+				})}
 		</div>
 	)
 }
