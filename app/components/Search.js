@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react"
 import DispatchContext from "../DispatchContext"
 import { useImmer } from "use-immer"
 import Axios from "axios"
-import { Link } from "react-router-dom"
 import Post from "./Post"
 
 function Search() {
@@ -73,7 +72,7 @@ function Search() {
 		})
 	}
 	return (
-		<div className='search-overlay'>
+		<>
 			<div className='search-overlay-top shadow-sm'>
 				<div className='container container--narrow'>
 					<label htmlFor='live-search-field' className='search-overlay-icon'>
@@ -104,7 +103,7 @@ function Search() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 }
 
