@@ -1,3 +1,4 @@
+app/index.html
 dist/
 node_modules/
 *.lock
