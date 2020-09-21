@@ -2,7 +2,7 @@ import React, { useEffect, Suspense } from "react"
 import ReactDOM from "react-dom"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import Axios from "axios"
-Axios.defaults.baseURL = process.env.BACKENDURL || ""
+Axios.defaults.baseURL = process.env.BACKENDURL || "https://yasnbackend.herokuapp.com"
 import { useImmerReducer } from "use-immer"
 import { CSSTransition } from "react-transition-group"
 
