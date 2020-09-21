@@ -20,6 +20,7 @@ import Profile from "./components/Profile"
 import EditPost from "./components/EditPost"
 import NotFound from "./components/NotFound"
 import Search from "./components/Search"
+import Chat from "./components/Chat"
 
 // CONTEXT
 import StateContext from "./StateContext"
@@ -29,6 +30,7 @@ function App() {
 	const initialState = {
 		loggedIn: Boolean(localStorage.getItem("complexappToken")),
 		isSearchOpen: false,
+		isChatOpen: false,
 		flashMessages: [],
 		user: {
 			token: localStorage.getItem("complexappToken"),
@@ -54,6 +56,12 @@ function App() {
 				return
 			case "closeSearch":
 				draft.isSearchOpen = false
+				return
+			case "toggleChat":
+				draft.isChatOpen = !draft.isChatOpen
+				return
+			case "closeChat":
+				draft.isChatOpen = false
 				return
 		}
 	}
@@ -106,6 +114,7 @@ function App() {
 					<CSSTransition timeout={330} in={state.isSearchOpen} classNames='search-overlay' unmountOnExit>
 						<Search />
 					</CSSTransition>
+					<Chat />
 					<Footer />
 				</BrowserRouter>
 			</DispatchContext.Provider>
