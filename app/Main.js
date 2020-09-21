@@ -37,6 +37,7 @@ function App() {
 			username: localStorage.getItem("complexappUsername"),
 			avatar: localStorage.getItem("complexappAvatar"),
 		},
+		unreadChatCount: 0,
 	}
 
 	function OurReducer(draft, action) {
@@ -62,6 +63,12 @@ function App() {
 				return
 			case "closeChat":
 				draft.isChatOpen = false
+				return
+			case "incrementUnreadChatCount":
+				draft.unreadChatCount++
+				return
+			case "clearUnreadChatCount":
+				draft.unreadChatCount = 0
 				return
 		}
 	}
