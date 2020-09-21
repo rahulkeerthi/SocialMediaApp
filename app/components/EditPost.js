@@ -85,7 +85,7 @@ function EditPost(props) {
 				if (response.data) {
 					dispatch({ type: "fetchComplete", value: response.data })
 					if (appState.user.username != response.data.author.username) {
-						appDispatch({ type: "flashMessage", value: "You do not have permission to edit this page" })
+						appDispatch({ type: "flashMessage", value: "You do not have permission to edit this page", colour: "red" })
 						props.history.push("/")
 					}
 				} else {

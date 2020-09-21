@@ -23,7 +23,7 @@ function HeaderLoggedOut() {
 		if (!username || !password) {
 			setUsernameInvalid(!username)
 			setPasswordInvalid(!password)
-			appDispatch({ type: "flashMessage", value: "You must enter a username and password to log in" })
+			appDispatch({ type: "flashMessage", value: "You must enter a username and password to log in", colour: "red" })
 			return
 		}
 		try {
@@ -33,7 +33,7 @@ function HeaderLoggedOut() {
 				appDispatch({ type: "flashMessage", value: "You have successfully logged in" })
 			} else {
 				console.log("Invalid username or password")
-				appDispatch({ type: "flashMessage", value: "Invalid username or password" })
+				appDispatch({ type: "flashMessage", value: "Invalid username or password", colour: "red" })
 			}
 		} catch (e) {
 			console.log("There was an error")

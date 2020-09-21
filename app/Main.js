@@ -33,6 +33,7 @@ function App() {
 		isSearchOpen: false,
 		isChatOpen: false,
 		flashMessages: [],
+		flashColour: "",
 		user: {
 			token: localStorage.getItem("complexappToken"),
 			username: localStorage.getItem("complexappUsername"),
@@ -52,6 +53,7 @@ function App() {
 				return
 			case "flashMessage":
 				draft.flashMessages.push(action.value)
+				draft.flashColour = action.colour
 				return
 			case "openSearch":
 				draft.isSearchOpen = true
@@ -110,7 +112,7 @@ function App() {
 		<StateContext.Provider value={state}>
 			<DispatchContext.Provider value={dispatch}>
 				<BrowserRouter>
-					<FlashMessages messages={state.flashMessages} />
+					<FlashMessages messages={state.flashMessages} colour={state.flashColour} />
 					<Header />
 					<Suspense fallback={<LoadingDotsIcon />}>
 						<Switch>
