@@ -149,7 +149,6 @@ function HomeGuest() {
 		if (state.email.checkCount) {
 			const ourRequest = Axios.CancelToken.source()
 			async function fetchResults() {
-				console.log(state.email.value)
 				try {
 					const response = await Axios.post("/doesEmailExist", { email: state.email.value }, { cancelToken: ourRequest.token })
 					dispatch({ type: "emailUniqueResults", value: response.data })

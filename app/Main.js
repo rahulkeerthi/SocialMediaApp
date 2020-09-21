@@ -2,7 +2,8 @@ import React, { useEffect, Suspense } from "react"
 import ReactDOM from "react-dom"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import Axios from "axios"
-Axios.defaults.baseURL = "http://localhost:8080"
+Axios.defaults.baseURL = process.env.BACKENDURL || ""
+console.log(process.env.BACKENDURL)
 import { useImmerReducer } from "use-immer"
 import { CSSTransition } from "react-transition-group"
 

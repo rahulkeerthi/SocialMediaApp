@@ -5,7 +5,9 @@
 	"author": "Rahul Keerthi <rahulkeerthi2@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"dev": "webpack-dev-server"
+		"dev": "webpack-dev-server",
+		"webpackBuild": "webpack",
+		"previewDist": "node previewDist"
 	},
 	"dependencies": {
 		"@babel/core": "^7.11.6",
@@ -13,7 +15,15 @@
 		"@babel/preset-react": "^7.10.4",
 		"axios": "^0.20.0",
 		"babel-loader": "^8.1.0",
+		"clean-webpack-plugin": "^3.0.0",
+		"dotenv-webpack": "^3.0.0",
+		"express": "^4.17.1",
+		"fs-extra": "^9.0.1",
+		"html-webpack-harddisk-plugin": "^1.0.2",
+		"html-webpack-plugin": "^4.5.0",
 		"immer": "^7.0.9",
+		"imports-loader": "^1.1.0",
+		"process": "0.11.10",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-markdown": "^4.3.1",

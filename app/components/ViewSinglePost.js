@@ -8,6 +8,7 @@ import ReactTooltip from "react-tooltip"
 import NotFound from "./NotFound"
 import StateContext from "../StateContext"
 import DispatchContext from "../DispatchContext"
+import ErrorBoundary from "./ErrorBoundary"
 
 function ViewSinglePost(props) {
 	const appState = useContext(StateContext)
@@ -24,7 +25,7 @@ function ViewSinglePost(props) {
 				setPost(response.data)
 				setIsLoading(false)
 			} catch (e) {
-				console.log("Issue!")
+				console.log(e.message)
 			}
 		}
 		fetchPost()
@@ -96,7 +97,9 @@ function ViewSinglePost(props) {
 			</p>
 
 			<div className='body-content'>
-				<ReactMarkdown source={post.body} allowedTypes={["paragraph", "break", "strong", "emphasis", "heading", "text", "list", "listItem"]} />
+				<ErrorBoundary>
+					<ReactMarkdown source={post.body} allowedTypes={["paragraph", "strong", "emphasis", "heading", "text", "list", "listItem"]} />
+				</ErrorBoundary>
 			</div>
 		</Page>
 	)
